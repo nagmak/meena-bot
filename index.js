@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
+var config = require('config')
 
 // Setting the local port to 5000
 app.set('port', (process.env.PORT || 5000))
@@ -18,13 +19,13 @@ app.get('/', function(req, res){
 })
 
 // Api.ai Developer Access token
-var apiAiAccessToken = "Authorization: Bearer 60866a67074344dfad478b7c9c1a0b6a";
+var apiAiAccToken = config.apiAiAccessToken;
 
 // Api.ai Client Access token
-var apiClientAccessToken = "Authorization: Bearer ac5528abc9d742beae6d0334afcf2196";
+var apiClientAccToken = config.apiClientAccessToken;
 
 // Access token
-var token = "EAAXXMBeuMEgBAFhWhZBnSwdxBVze1MCKZA6M5wKgsnoWTT1G9S4mYrom2l8eWtSoMs0ymfjfAiZCzRNYn8lxPDOWgmbvEkWZAgBW40GTfC1yzTxSyaneG5HKdoQgSOiB7gZBwDog0oZCr94FBmAsUTEEVjtMLxLPfY8VNLa3atuAZDZD"
+var fbToken = config.token;
 
 //for Facebook verification
 app.get('/webhook/', function (req, res) {
